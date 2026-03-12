@@ -19,6 +19,7 @@ model User {
   id      Int      @id @default(autoincrement()) 
   email   String   @unique
   name    String?
+  role Role @default(user)
   posts Post[]
   profile Profile?
 } 
@@ -48,4 +49,11 @@ model Post {
   authorId Int
 
   author User @relation(fields: [authorId], references: [id])
+}
+
+
+
+enum Role {
+  user
+  admin
 }
