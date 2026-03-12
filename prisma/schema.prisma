@@ -20,14 +20,14 @@ model User {
   email   String   @unique
   name    String?
   posts Post[]
-  profiles Profile[]
+  profile Profile?
 } 
 
 model Profile {
   id Int @id @default(autoincrement())
   bio String?
   dateOfBirth DateTime?
-  userId Int
+  userId Int @unique
   user  User @relation(fields: [userId], references: [id])
 }
 
