@@ -20,7 +20,21 @@ model User {
   email   String   @unique
   name    String?
   posts Post[]
+  profiles Profile[]
 } 
+
+model Profile {
+  id Int @id @default(autoincrement())
+  bio String?
+  dateOfBirth DateTime?
+  userId Int
+  user  User @relation(fields: [userId], references: [id])
+}
+
+
+
+
+
 
 
 model Post {
